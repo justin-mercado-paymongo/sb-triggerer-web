@@ -9,7 +9,6 @@
   } from "$lib/components/ui/card";
   import Alert from "$lib/components/ui/alert/alert.svelte";
   import CardDescription from "$lib/components/ui/card/card-description.svelte";
-  import FixtureTable from "./fixture_table.svelte";
   import { Input } from "$lib/components/ui/input";
   import data from "./fixture.json";
   import SoundboxForm from "./soundbox_form.svelte";
@@ -40,40 +39,25 @@
     <ol>
       <li>1. The Soundbox needs to be turned on to receive requests</li>
         <li>
-          2. Enter the Activation Code and Serial Number. You can use the table below for reference.
+          2. Enter the Activation Code and Serial Number. Use the linked
+          spreadsheet for reference.
         </li>
         <li>3. Enter the Secret Key into the "Secret Key" field</li>
         <li>4. Click the button to trigger the Soundbox</li>
         <li>5. The response will be shown here</li>
       </ol>
       <Alert variant="destructive">
-        WARNING: This is using <b class="font-black">PRODUCTION</b> Soundboxes. Accidentally
-        triggering a production Soundbox will actually play audio. Make sure you
-        double check before triggering.
+        WARNING: Accidentally triggering a production Soundbox will actually
+        play audio. 
       </Alert>
     <Card class="flex flex-col gap-2 rounded-none">
-      <CardHeader class="flex gap-4">
-        <span>
-          <CardTitle>Available Soundboxes</CardTitle>
-          <CardDescription>Last updated: Oct 23 2024</CardDescription>
-        </span>
-        <Input
-          type="text"
-          placeholder="Search by Trade Name"
-          bind:value={search}
-          on:change={onChange}
-        />
-      </CardHeader>
-      <CardContent class="w-full max-h-[500px] overflow-y-auto">
-        <FixtureTable {filteredData} />
-      </CardContent>
-      <CardFooter class="flex justify-center">
+      <CardContent class="flex justify-center">
         <a
           class="text-lg text-blue-500 hover:underline"
           href="https://docs.google.com/spreadsheets/d/1ScSMoB5aJUNC_LUtPqXVmFFN3HrH4e8xIXfVX7W_5Vk/edit?gid=0#gid=0"
           >Complete Soundbox List</a
         >
-      </CardFooter>
+      </CardContent>
     </Card>
   </div>
   <SoundboxForm {formData} />
